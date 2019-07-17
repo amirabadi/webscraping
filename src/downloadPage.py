@@ -2,8 +2,10 @@ import urllib.request
 from urllib.error import URLError, HTTPError, ContentTooShortError
 
 
-def download(url, num_retries=2):
+def download(url, user_agent='wswp', num_retries=2):
     print("Downloading:" + url)
+    request = urllib.request(url)
+    request.add_header('User-agent', user_agent)
     try:
         html = urllib.request.urlopen(url).read()
     except(URLError, HTTPError, ContentTooShortError) as e:
