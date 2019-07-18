@@ -4,7 +4,7 @@ from urllib.error import URLError, HTTPError, ContentTooShortError
 
 def download(url, user_agent='wswp', num_retries=2):
     print("Downloading:" + url)
-    request = urllib.request(url)
+    request = urllib.request.Request(url)
     request.add_header('User-agent', user_agent)
     try:
         html = urllib.request.urlopen(url).read()
